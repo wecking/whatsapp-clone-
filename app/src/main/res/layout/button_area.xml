@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@android:color/transparent"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="10"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center|bottom"
+        android:padding="5dp"
+        android:background="@drawable/button_background">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingBottom="8dp"
+        android:paddingStart="4dp"
+        android:src="@drawable/ic_sentiment_satisfied_black_24dp"/>
+
+    <EditText
+        android:id="@+id/message_input"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/prompt_message"
+        android:imeActionId="@+id/send"
+        android:imeActionLabel="@string/action_send"
+        android:imeOptions="actionSend"
+        android:inputType="text" />
+    <ImageView
+        android:id="@+id/attach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingBottom="8dp"
+        android:src="@drawable/ic_attach_file_black_24dp" />
+    <ImageView
+        android:id="@+id/camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingBottom="8dp"
+        android:src="@drawable/ic_camera_alt_black_24dp"/>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/send_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center|end"
+        android:padding="8dp"
+        android:src="@drawable/ic_send_black_24dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="5dp"/>
+</LinearLayout>
+
+
+
