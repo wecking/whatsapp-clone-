@@ -1,4 +1,4 @@
-package com.github.nkzawa.socketio.androidchat;
+package com.androidchat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.github.nkzawa.socketio.androidchat.R;
+
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import org.json.JSONException;
@@ -104,7 +107,6 @@ public class LoginActivity extends Activity {
             return;
         }
 
-//        mUsername = username;
         nickname = username;
 
         JSONObject data = new JSONObject();
@@ -126,20 +128,6 @@ public class LoginActivity extends Activity {
             JSONObject data = (JSONObject) args[0];
 //
             Log.d("king", data.toString()+"hhhhhhh");
-//
-//            try {
-//                LoginActivity.mUsername = data.getString("messageby");
-//                Log.v("king", data.getString("messageby"));
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            int numUsers;
-//            try {
-//                numUsers = data.getInt("numUsers");
-//            } catch (JSONException e) {
-//                return;
-//            }
 
             try {
                 Log.v("king",new JSONObject(new JSONObject(data.getString("message")).getString("info")).getString("_id").toString() + "kkkkk" );
@@ -153,11 +141,6 @@ public class LoginActivity extends Activity {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             LoginActivity.this.startActivity(intent);
             LoginActivity.this.finish();
-//            Intent intent = new Intent();
-//            intent.putExtra("username", mUsername);
-            //            intent.putExtra("numUsers", numUsers);
-//            setResult(RESULT_OK, intent);
-//            finish();
         }
     };
 }

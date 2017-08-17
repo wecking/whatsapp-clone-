@@ -1,4 +1,4 @@
-package com.github.nkzawa.socketio.androidchat;
+package com.androidchat;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +25,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.nkzawa.socketio.androidchat.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,7 +95,6 @@ public class MainFragment extends Fragment {
         mSocket.on("createMsg", onNewMessage);
         mSocket.on("fetchMessagesWithUsers", onLoadMessages);
 //        mSocket.on("createUser", onUserJoined);
-        mSocket.on("createMsg", onNewMessage);
 //        mSocket.on("typing", onTyping);
 //        mSocket.on("stop typing", onStopTyping);
         mSocket.connect();
@@ -267,7 +268,6 @@ public class MainFragment extends Fragment {
         }
 
         mInputMessageView.setText("");
-        addMessage(LoginActivity.nickname, message);
         JSONObject data = new JSONObject();
         try {
             Log.v("king", LoginActivity.mUsername+ "sdnfsskdfsfsdssdsdsd");
@@ -362,13 +362,16 @@ public class MainFragment extends Fragment {
 //                        e.printStackTrace();
 //                    });
                     try {
-                        username = new JSONObject(data.getString("message")).getString("shortname");
-                        message = data.getString("message");
+                        JSONObject jsonObject = new JSONObject(new JSONObject(data.getString("message")).getString("info"));
+                        Log.v("king",jsonObject.toString());
+                        username = new JSONObject(jsonObject.getString("messageby")).getString("shortname");
+                        message = jsonObject.getString("message");
+                        Log.v("king", username+ "  " + message);
                         addMessage(username, message);
                     } catch (JSONException e1) {
                         e1.printStackTrace();
                     }
-                    Log.v("king", data.toString());
+//                    Log.v("king", "bjhbhhhhhhhhhhhh"+data.toString());
 
 //                    removeTyping(username);
 //                    addMessage(username, message);
