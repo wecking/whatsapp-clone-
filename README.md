@@ -1,6 +1,5 @@
-# socket.io-android-chat
+## This chat clone is  built from the clone of socket.io-android-chat
 
-This is a simple chat demo for socket.io and Android. You can connect to [https://socketio-chat.now.sh/](https://socketio-chat.now.sh/) using this app.
 
 ## Installation
 
