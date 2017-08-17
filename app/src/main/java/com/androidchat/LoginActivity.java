@@ -96,7 +96,6 @@ public class LoginActivity extends Activity {
         String phone = mPhoneView.getText().toString().trim();
         String fullName = mFullName.getText().toString().trim();
 
-        Log.d("king", username);
 
         // Check for a valid username.
         if (TextUtils.isEmpty(username)) {
@@ -126,11 +125,8 @@ public class LoginActivity extends Activity {
         @Override
         public void call(Object... args) {
             JSONObject data = (JSONObject) args[0];
-//
-            Log.d("king", data.toString()+"hhhhhhh");
 
             try {
-                Log.v("king",new JSONObject(new JSONObject(data.getString("message")).getString("info")).getString("_id").toString() + "kkkkk" );
                 mUsername = new JSONObject(new JSONObject(data.getString("message")).getString("info")).getString("_id");
             } catch (JSONException e) {
 

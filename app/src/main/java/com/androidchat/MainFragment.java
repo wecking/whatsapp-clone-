@@ -239,7 +239,6 @@ public class MainFragment extends Fragment {
 
         mTyping = false;
 
-        Log.v("king", LoginActivity.mUsername + "dsddddddd");
 
 
         String message = mInputMessageView.getText().toString().trim();
@@ -251,10 +250,8 @@ public class MainFragment extends Fragment {
         mInputMessageView.setText("");
         JSONObject data = new JSONObject();
         try {
-            Log.v("king", LoginActivity.mUsername+ "sdnfsskdfsfsdssdsdsd");
             data.put("message", message);
             data.put("messageby", LoginActivity.mUsername);
-            Log.v("king", data.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -304,7 +301,6 @@ public class MainFragment extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i(TAG, "diconnected");
                     isConnected = false;
                     Toast.makeText(getActivity().getApplicationContext(),
                             R.string.disconnect, Toast.LENGTH_LONG).show();
@@ -319,7 +315,6 @@ public class MainFragment extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Log.e(TAG, "Error connecting");
                     Toast.makeText(getActivity().getApplicationContext(),
                             R.string.error_connect, Toast.LENGTH_LONG).show();
                 }
@@ -333,16 +328,13 @@ public class MainFragment extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Log.v("king", "ssddsdsdsd" + args[0].toString());
                     JSONObject data = (JSONObject) args[0];
                         String username;
                         String message;
                     try {
                         JSONObject jsonObject = new JSONObject(new JSONObject(data.getString("message")).getString("info"));
-                        Log.v("king",jsonObject.toString());
                         username = new JSONObject(jsonObject.getString("messageby")).getString("shortname");
                         message = jsonObject.getString("message");
-                        Log.v("king", username+ "  " + message);
                         addMessage(username, message);
                     } catch (JSONException e1) {
                         e1.printStackTrace();
@@ -360,7 +352,6 @@ public class MainFragment extends Fragment {
                 @Override
                 public void run() {
                     JSONArray data = (JSONArray) objectToJSONArray(args[0].toString());
-                        Log.v("king", args[0].toString());
                     for(int i = 0; i <=data.length(); i++) {
                         String username;
                         String message;
@@ -369,12 +360,10 @@ public class MainFragment extends Fragment {
                                 JSONObject data2 = new JSONObject(data.getString(i));
                                 username = data2.getJSONObject("messageby").getString("shortname");
                                 message = data2.getString("message");
-                                Log.v("king", data.length() + data2.toString());
                                 addMessage(username, message);
                             }
 
                         } catch (JSONException e) {
-                            Log.e(TAG, e.getMessage());
                             return;
                         }
                     }
